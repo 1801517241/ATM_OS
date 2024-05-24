@@ -79,7 +79,7 @@ void PageSetUser(char* UserName, char* UserPassword)
 				rewind(stdin);			//清除输入缓存区			
 			}
 			printf("修改密码：");
-			scanf_s("%s", Password, (int)sizeof UserPassword);
+			scanf_s("%s", UserPassword, (int)sizeof UserPassword);
 			rewind(stdin);			//清除输入缓存区
 			PageSetUser(UserName, UserPassword);
 			break;
