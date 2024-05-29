@@ -1,6 +1,6 @@
 #include "Function.h"
 
-#include <stdio.h>
+#include <iostream>
 #include <Windows.h>
 
 #ifdef _WIN32
@@ -16,8 +16,8 @@
 /// <summary>
 /// 
 /// </summary>
-/// <param name="UserName"></param>
-/// <param name="UserPassword"></param>
+/// <param name="UserName">用户名</param>
+/// <param name="UserPassword">密码</param>
 void PageSetUser(char* UserName, char* UserPassword)
 {
 	system(CLEAR_SCREEN);
@@ -26,78 +26,78 @@ void PageSetUser(char* UserName, char* UserPassword)
 	char name[11] = { 0 };
 	char Password[11] = { 0 };
 
-	printf("------------Page-SetUser------------\n");
-	printf("当前信息：\n");
-	printf("  用户名：%s | 密码：%s\n", UserName, UserPassword);
-	printf("------------------------------------\n");
+	std::cout << "------------Page-SetUser------------\n";
+	std::cout << "当前信息：\n";
+	std::cout << "  用户名：" << UserName << " | 密码：" << UserPassword << std::endl;
+	std::cout << "------------------------------------\n";
 
-	printf("选择业务(修改用户名/密码/返回）：");
-	scanf_s("%d", &num);
+	std::cout << "选择业务(修改用户名/密码/返回）：";
+	std::cin >> num;
 	rewind(stdin);			//清除输入缓存区
 	switch (num)
 	{
 	case 1:
-		printf("当前用户名：");
-		scanf_s("%s", &name, (int)sizeof name);
+		std::cout << "当前用户名：";
+		std::cin >> name;
 		rewind(stdin);			//清除输入缓存区
 		if (strcmp(name, UserName) != 0)
 		{
-			printf("当前用户名(错误)：");
-			scanf_s("%s", &name, (int)sizeof name);
+			std::cout << "当前用户名(错误)：";
+			std::cin >> name;
 			rewind(stdin);			//清除输入缓存区
 			while (strcmp(name, UserName) != 0)
 			{
-				printf("当前用户名(错误)：");
-				scanf_s("%s", &name, (int)sizeof name);
+				std::cout << "当前用户名(错误)：";
+				std::cin >> name;
 				rewind(stdin);			//清除输入缓存区
 
 			}
-			printf("修改用户名：");
-			scanf_s("%s", UserName, (int)sizeof UserName);
+			std::cout << "修改用户名：";
+			std::cin >> UserName;
 			rewind(stdin);			//清除输入缓存区
 			PageSetUser(UserName, UserPassword);
 			break;
 		}
 		else
 		{
-			printf("修改用户名：");
-			scanf_s("%s", UserName, (int)sizeof UserName);
+			std::cout << "修改用户名：";
+			std::cin >> UserName;
 			rewind(stdin);			//清除输入缓存区
 			PageSetUser(UserName, UserPassword);
 		}
 		break;
 	case 2:
-		printf("当前密码：");
-		scanf_s("%s", &Password, (int)sizeof Password);
+		std::cout << "当前密码：";
+		std::cin >> Password;
 		rewind(stdin);			//清除输入缓存区
 		if (strcmp(Password, UserPassword) != 0)
 		{
 			while (strcmp(Password, UserPassword) != 0)
 			{
-				printf("当前密码(错误)：");
-				scanf_s("%s", &Password, (int)sizeof Password);
-				rewind(stdin);			//清除输入缓存区			
+				std::cout << "当前密码（错误）：";
+				std::cin >> Password;
+				rewind(stdin);			//清除输入缓存区	
 			}
-			printf("修改密码：");
-			scanf_s("%s", UserPassword, (int)sizeof UserPassword);
-			rewind(stdin);			//清除输入缓存区
+			std::cout << "当前密码（错误）：";
+			std::cin >> UserPassword;
+			rewind(stdin);			//清除输入缓存区	
 			PageSetUser(UserName, UserPassword);
 			break;
 		}
 		else
 		{
-			printf("修改密码：");
-			scanf_s("%s", UserPassword, (int)sizeof UserPassword);
-			rewind(stdin);			//清除输入缓存区
+			std::cout << "当前密码（错误）：";
+			std::cin >> UserPassword;
+			rewind(stdin);			//清除输入缓存区	
 			PageSetUser(UserName, UserPassword);
 		}
 		break;
 	case 3:
-		printf("返回Page-UserInformation！\n");
+		std::cout << "返回Page-UserInformation！\n";
 		Sleep(1000);
 		break;
 	default:
-		printf("输入错误值!");
+		std::cout << "输入错误值!";
 		Sleep(1000);
 		PageSetUser(UserName, UserPassword);
 		break;
@@ -113,7 +113,7 @@ void PageSetCarNum(char* UserName, char* UserPassword)
 {
 	system(CLEAR_SCREEN);
 
-	printf("-----------Page-SetCarNum-----------\n");
+	std::cout << "-----------Page-SetCarNum-----------\n";
 }
 
 /// <summary>
@@ -127,18 +127,18 @@ void PageDeposit(double* Amount)
 	int num;
 	double money = 0;
 
-	printf("------------Page-Deposit------------\n");
+	std::cout << "------------Page-Deposit------------\n";
 
-	printf("\n当前金额￥%.2f\n", *Amount);
+	std::cout << "\n当前金额" << Amount << std::endl;
 
-	printf("\n请确认当前业务(存款/退出)：");
-	scanf_s("%d", &num);
+	std::cout << "\n请确认当前业务(存款/退出)：";
+	std::cin >> num;
 
 	switch (num)
 	{
 	case 1:
-		printf("请输入存款额度：");
-		scanf_s("%lf", &money);
+		std::cout << "请输入存款额度：";
+		std::cin >> money;
 		rewind(stdin);			//清除输入缓存区
 
 		*Amount += money;
@@ -146,11 +146,11 @@ void PageDeposit(double* Amount)
 		PageDeposit(Amount);
 		break;
 	case 2:
-		printf("返回Page-UserInformation！\n");
+		std::cout << "返回Page-UserInformation！\n";
 		Sleep(1000);
 		break;
 	default:
-		printf("输入错误值!");
+		std::cout << "输入错误值!";
 		Sleep(1000);
 		PageDeposit(Amount);
 		break;
@@ -168,32 +168,32 @@ void PageWithdrawal(double* Amount)
 	int num;
 	double money = 0;
 
-	printf("-----------Page-Withdrawal-----------\n");
+	std::cout << "-----------Page-Withdrawal-----------\n";
 
-	printf("\n当前金额￥%.2f\n", *Amount);
+	std::cout << "\n当前金额￥%.2f\n";
 
-	printf("\n请确认当前业务(取款/退出)：");
-	scanf_s("%d", &num);
+	std::cout << "\n请确认当前业务(取款/退出)：";
+	std::cin >> num;
 
 	switch (num)
 	{
 	case 1:
-		printf("请输入取款额度：");
-		scanf_s("%lf", &money);
+		std::cout << "请输入取款额度：";
+		std::cin >> money;
 		rewind(stdin);			//清除输入缓存区
 		if (money <= *Amount)
 			*Amount -= money;
 		else
-			printf("余额不足!");
+			std::cout << "余额不足!";
 		Sleep(1000);
 		PageWithdrawal(Amount);
 		break;
 	case 2:
-		printf("返回Page-UserInformation！\n");
+		std::cout << "返回Page-UserInformation！\n";
 		Sleep(1000);
 		break;
 	default:
-		printf("输入错误值!");
+		std::cout << "输入错误值!";
 		Sleep(1000);
 		PageWithdrawal(Amount);
 		break;

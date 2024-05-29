@@ -5,10 +5,10 @@
 #ifndef __PAGEUSER_H__
 #define __PAGEUSER_H__
 
-void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Amount);		//登录页面(UserName 用户 UserPassword 密码)
-void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, double* Amount);
+void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Amount);					//登录页面(UserName 用户,UserPassword 密码,UserCardNum 卡号,Amount 余额)
+void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, double* Amount);		//菜单页面(UserName 用户,UserPassword 密码,UserCardNum 卡号,Amount 余额)
 
-bool TAV(char* UserName, char* UserPassword);
+bool TAV(char* UserName, char* UserPassword);		//账号验证
 
 #endif // !__PAGEUSER_H__
 
