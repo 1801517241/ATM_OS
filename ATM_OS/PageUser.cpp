@@ -1,5 +1,6 @@
 #include "PageUser.h"
 
+#include <iostream>
 #include <stdio.h>
 #include <string>
 #include <Windows.h>
@@ -17,28 +18,35 @@
 /// <summary>
 /// 
 /// </summary>
-/// <param name="UserName"></param>
-/// <param name="UserPassword"></param>
-/// <param name="UserCardNum"></param>
-/// <param name="Amount"></param>
+/// <param name="UserName">用户名</param>
+/// <param name="UserPassword">密码</param>
+/// <param name="UserCardNum">卡号</param>
+/// <param name="Amount">余额</param>
 void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Amount)
 {
 	bool isLoggedIn = false;
 	while (isLoggedIn != true)
 	{
-		printf("-------------Page-login-------------\n");
-		printf("User:");
-		scanf_s("%s", UserName, (int)sizeof UserName);
+		std::cout << "-------------Page-login-------------" << std::endl;
+		//printf("-------------Page-login-------------\n");
+		std::cout << "User:" << std::endl;
+		//printf("User:");
+		std::cin >> UserName;
+		//scanf_s("%s", UserName, (int)sizeof UserName);
 		rewind(stdin);			//清除输入缓存区
+		std::cout << "Password:" << std::endl;
 		printf("Password:");
-		scanf_s("%s", UserPassword, (int)sizeof UserPassword);
+		std::cin >> UserPassword;
+		//scanf_s("%s", UserPassword, (int)sizeof UserPassword);
 		rewind(stdin);			//清除输入缓存区
 
 		isLoggedIn = TAV(UserName, UserPassword);
 		if (isLoggedIn == true)
 		{
-			printf("------------------------------------\n");
-			printf("登录成功！跳转至Page-UserInformation页面\n");
+			std::cout << "------------------------------------" << std::endl;
+			//printf("------------------------------------\n");
+			std::cout << "登录成功！跳转至Page-UserInformation页面" << std::endl;
+			//printf("登录成功！跳转至Page-UserInformation页面\n");
 
 			Sleep(1000);
 			PageUserInformation(UserName, UserPassword, UserCardNum, Amount);
@@ -46,7 +54,8 @@ void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Am
 		else
 		{
 			isLoggedIn = false;
-			printf("登录失败，检查用户名或密码！\n");
+			std::cout << "登录失败，检查用户名或密码！" << std::endl;
+			//printf("登录失败，检查用户名或密码！\n");
 		}
 	}
 }
@@ -54,10 +63,10 @@ void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Am
 /// <summary>
 /// 
 /// </summary>
-/// <param name="UserName"></param>
-/// <param name="UserPassword"></param>
-/// <param name="UserCardNum"></param>
-/// <param name="Amount"></param>
+/// <param name="UserName">用户名</param>
+/// <param name="UserPassword">密码</param>
+/// <param name="UserCardNum">卡号</param>
+/// <param name="Amount">余额</param>
 void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, double* Amount)
 {
 	int num = 6;
@@ -107,9 +116,9 @@ void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, 
 /// <summary>
 /// 
 /// </summary>
-/// <param name="UserName"></param>
-/// <param name="UserPassword"></param>
-/// <returns></returns>
+/// <param name="UserName">用户名</param>
+/// <param name="UserPassword">密码</param>
+/// <returns>1 正确、2 错误</returns>
 bool TAV(char* UserName, char* UserPassword)
 {
 	return(strcmp(UserName, "admin") == 0 && strcmp(UserPassword, "123456") == 0);
