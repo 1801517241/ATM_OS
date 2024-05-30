@@ -1,0 +1,10 @@
+diff a/ATM_OS/Function.cpp b/ATM_OS/Function.cpp	(rejected hunks)
+@@ -79,7 +79,7 @@
+ 				rewind(stdin);			//������뻺����			
+ 			}
+ 			printf("�޸����룺");
+-			scanf_s("%s", Password, (int)sizeof UserPassword);
++			scanf_s("%s", UserPassword, (int)sizeof UserPassword);
+ 			rewind(stdin);			//������뻺����
+ 			PageSetUser(UserName, UserPassword);
+ 			break;

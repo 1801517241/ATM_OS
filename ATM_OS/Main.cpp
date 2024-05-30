@@ -1,6 +1,6 @@
 #include"PageUser.h"
 
-#include <iostream>
+#include <stdio.h>
 
 int main()
 {

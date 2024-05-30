@@ -1,6 +1,6 @@
 #include "PageUser.h"
 
-#include <iostream>
+#include <stdio.h>
 #include <string>
 #include <Windows.h>
 
@@ -26,19 +26,19 @@ void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Am
 	bool isLoggedIn = false;
 	while (isLoggedIn != true)
 	{
-		std::cout << "-------------Page-login-------------" << std::endl;
-		std::cout << "User:";
-		std::cin >> UserName;
+		printf("-------------Page-login-------------\n");
+		printf("User:");
+		scanf_s("%s", UserName, (int)sizeof UserName);
 		rewind(stdin);			//清除输入缓存区
-		std::cout << "Password:";
-		std::cin >> UserPassword;
+		printf("Password:");
+		scanf_s("%s", UserPassword, (int)sizeof UserPassword);
 		rewind(stdin);			//清除输入缓存区
 
 		isLoggedIn = TAV(UserName, UserPassword);
 		if (isLoggedIn == true)
 		{
-			std::cout << "------------------------------------" << std::endl;
-			std::cout << "登录成功！跳转至Page-UserInformation页面" << std::endl;
+			printf("------------------------------------\n");
+			printf("登录成功！跳转至Page-UserInformation页面\n");
 
 			Sleep(1000);
 			PageUserInformation(UserName, UserPassword, UserCardNum, Amount);
@@ -46,7 +46,7 @@ void PageLogin(char* UserName, char* UserPassword, char* UserCardNum, double* Am
 		else
 		{
 			isLoggedIn = false;
-			std::cout << "登录失败，检查用户名或密码！" << std::endl;
+			printf("登录失败，检查用户名或密码！");
 		}
 	}
 }
@@ -64,14 +64,14 @@ void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, 
 
 	system(CLEAR_SCREEN);
 
-	std::cout << "--------Page-UserInformation--------\n";
-	std::cout << "1.修改用户信息\t| 2.修改账户信息\n";
-	std::cout << "3.存款\t\t| 4.取款\n";
-	std::cout << "5.切换语言\t| 6.退出\n";
-	std::cout << "------------------------------------\n";
+	printf("--------Page-UserInformation--------\n");
+	printf("1.修改用户信息\t| 2.修改账户信息\n");
+	printf("3.存款\t\t| 4.取款\n");
+	printf("5.切换语言\t| 6.退出\n");
+	printf("------------------------------------\n");
 
-	std::cout << "选择服务：";
-	std::cin >> num;
+	printf("选择服务：");
+	scanf_s("%d", &num);
 	rewind(stdin);			//清除输入缓存区
 	switch (num)
 	{
@@ -94,11 +94,11 @@ void PageUserInformation(char* UserName, char* UserPassword, char* UserCardNum, 
 	case 5:
 		// 实现语言切换功能
 	case 6:
-		std::cout << "退出...\n";
+		printf("退出...\n");
 		Sleep(1000);
 		break;
 	default:
-		std::cout << "无效选项！请重试。\n";
+		printf("无效选项！请重试。\n");
 		Sleep(1000);
 		PageUserInformation(UserName, UserPassword, UserCardNum, Amount);
 	}
