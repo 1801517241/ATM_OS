@@ -75,7 +75,7 @@ void PageSetUser(char* UserName, char* UserPassword)
 			while (strcmp(Password, UserPassword) != 0)
 			{
 				printf("当前密码(错误)：");
-				scanf_s("%s", &Password, (int)sizeof Password);
+				scanf_s("%s", &UserPassword, (int)sizeof Password);
 				rewind(stdin);			//清除输入缓存区			
 			}
 			printf("修改密码：");
